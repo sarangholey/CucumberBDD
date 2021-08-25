@@ -42,15 +42,47 @@ Feature: Test the e-commerce app landing page
     Then User is able to see the app title "My Store"
     And User close the browser
 
-   
+  @appLogin
+  Scenario: Registered user login test
+  	Given User open the browser
+    And user maximize the browser
+    And User open the Url "http://automationpractice.com/"
+    And User clicks on signin button
+    When User enter his registered "usertest123@gmail.com"
+    And User enters his password "John123!"
+    And User clicks on signin button
+    Then User first and last name is displayed as "John Patric" in top right corner
+    And User close the browser
+    
+ 	@appMainList
+  Scenario: App main category list validation
+  	Given User open the browser
+    And user maximize the browser
+    And User open the Url "http://automationpractice.com/"
+    Then User is able to see the main categories
+    | WOMEN 		|
+    | DRESSES		|
+    | T-SHIRTS 	|
+    And User close the browser
+    
+   @search
+   Scenario Outline: User is able to search multiple products
+   	Given User open the browser
+    And user maximize the browser
+    And User open the Url "http://automationpractice.com/"
+    When User Search for product "<product_name>"
+    Then Search Result page is displayed
+    And User close the browser
+    Examples:
+      | product_name 	|
+      | T-shirt     	|
+      | Dresses   		|
+      | Casual  			|
+    
 
-  #@titletest
-  #Scenario Outline: Title of your scenario outline
-    #Given I want to write a step with <name>
-    #When I check for the <value> in step
-    #Then I verify the <status> in step
-#
-    #Examples: 
-      #| name  | value | status  |
-      #| name1 |     5 | success |
-      #| name2 |     7 | Fail    |
+
+   
+    
+      
+      
+      
